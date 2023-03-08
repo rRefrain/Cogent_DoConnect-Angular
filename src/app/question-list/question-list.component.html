@@ -1,0 +1,30 @@
+<div class="container">
+    <header class="jumbotron">
+        <h2> Question List</h2>
+        <a routerLink="../questionCreate" routerLinkActive="active" class="nav-link" >Add Question</a>
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th> Title </th>
+                    <th> Topic </th>
+                    <th> CreatedBy</th>
+                    <th> Status </th>
+                    <th> Votes </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let question of questions" >
+                    <td> {{ question.title }} </td>
+                    <td> {{ question.topic }} </td>
+                    <td> {{ question.createdBy }} </td>
+                    <td> {{ question.status }}</td>
+                    <td> {{ question.voteTally }}</td>
+                    <td>
+                        <button (click) = "questionDetails(question.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </header>
+  </div>

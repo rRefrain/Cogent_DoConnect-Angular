@@ -1,0 +1,33 @@
+<style>
+    img {
+      width: 500px;
+      height: 250px;
+      object-fit: contain;
+    }
+    </style>
+<div class="container">
+    <header class="jumbotron">
+            <h3> Answer </h3>
+        <div>
+            <div>
+                <label> <b> CreatedBy: </b></label> {{answer.createdBy}}
+            </div>
+            <div>
+                <label> <b> voteTally: </b></label> {{answer.voteTally}}
+            </div>
+            <div>
+                <label> <b> descriptionAnswer: </b></label> {{answer.descriptionAnswer}}
+            </div>
+            <div>
+                <label> <b> LastEdit: </b></label> {{answer.datetime}}
+            </div>
+            <div *ngIf="canEdit">
+                <button (click) = "answerEdit(answer.id)" class = "btn btn-info" style="margin-left: 10px"> Edit </button>
+            </div>
+            <div *ngIf="canEdit">
+                <button (click) = "answerDelete(answer.id)" class = "btn btn-info" style="margin-left: 10px"> Delete</button>
+            </div>
+        </div>  
+        <img src = {{answer.imgSrc}} alt = " " class = "oversize"> 
+    </header>
+  </div>

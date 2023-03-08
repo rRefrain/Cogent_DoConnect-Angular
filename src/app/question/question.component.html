@@ -1,0 +1,65 @@
+<style>
+    img {
+      width: 500px;
+      height: 250px;
+      object-fit: contain;
+    }
+    </style>
+<div class="container">
+    <header class="jumbotron">
+            <h3> {{question.title}}</h3>
+        <div>
+            <div>
+                <label> <b> Status: </b></label> {{question.status}}
+            </div>
+            <div>
+                <label> <b> descriptionQuestion: </b></label> {{question.descriptionQuestion}}
+            </div>
+            <div>
+                <label> <b> LastEdit: </b></label> {{question.datetime}}
+            </div>
+            <div *ngIf = "canEdit">
+                <button (click) = "questionEdit(question.id)" class = "btn btn-info" style="margin-left: 10px"> Edit </button>
+            </div>
+            <div *ngIf = "canEdit">
+                <button (click) = "questionDelete(question.id)" class = "btn btn-info" style="margin-left: 10px"> Delete</button>
+            </div>
+            <div *ngIf = "isLoggedIn">
+                <button (click) = "answerCreate(question.id)" class = "btn btn-info" style="margin-left: 10px"> Add Answer</button>
+            </div>
+                <img src = {{question.imageSrc}} alt = " " class = "oversize"> 
+        
+        </div>
+     
+        <table class = "table table-striped">
+            <thead>
+                <tr>
+                    <th> DateTime </th>
+                    <th> CreatedBy </th>
+                    <th> description</th>
+                    <th> Status </th>
+                    <th> Votes </th>
+                    <th> Actions </th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor = "let answer of answers" >
+                    <td> {{ answer.datetime }} </td>
+                    <td> {{ answer.createdBy }} </td>
+                    <td> {{ answer.descriptionAnswer }} </td>
+                    <td> {{ answer.approved }}</td>
+                    <td> {{ answer.voteTally }}</td>
+                    <td>
+                       
+                        <button (click) = "answerDetails(answer.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+                  <!--
+                        button (click) = "updateEmployee(employee.id)" class = "btn btn-info"> Update</button>
+                        <button (click) = "deleteEmployee(employee.id)" class = "btn btn-danger" style="margin-left: 10px"> Delete</button>
+                        <button (click) = "employeeDetails(employee.id)" class = "btn btn-info" style="margin-left: 10px"> View</button>
+                        -->
+                    </td>
+                </tr>
+            </tbody>
+        </table>   
+    </header>
+  </div>
